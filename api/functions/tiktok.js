@@ -59,15 +59,7 @@ function proccess(streamdata) {
     })
 
     tiktokLiveConnection.on('disconnected', () => {
-        if (streamdata.proccessing){
-            console.log('Disconnected :(');
-            data.forEach((key,element) => {
-                if (streamdata === element){
-                    data[key] = null;
-                }
-            });
-        }
-        else tiktokLiveConnection.disconnect();
+        console.log('Disconnected :(');
     })
     tiktokLiveConnection.on('streamEnd', (actionId) => {
         if (streamdata.proccessing){

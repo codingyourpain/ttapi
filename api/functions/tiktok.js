@@ -52,7 +52,7 @@ function proccess(streamdata) {
             streamdata.likes.push({
                 uniqueId : data.uniqueId,
                 userId   : data.userId,
-                likeCount   : data.totalLikeCount,
+                likeCount   : data.likeCount,
             });
         }
         else tiktokLiveConnection.disconnect();

@@ -41,6 +41,7 @@ function proccess(streamdata) {
                 uniqueId : data.uniqueId,
                 userId   : data.userId,
                 giftId   : data.giftId,
+                repeatCount : data.repeatCount
             });
         }
         else tiktokLiveConnection.disconnect();

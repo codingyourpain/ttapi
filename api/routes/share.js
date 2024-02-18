@@ -36,7 +36,7 @@ function share(router) {
         const index = parseInt(req.params.index);
         if (data[productID]) {
             res.status(200).json(
-                data[productID].follow[index]
+                data[productID].share[index]
             );
         }
         else res.status(200).json(

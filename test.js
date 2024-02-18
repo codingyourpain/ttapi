@@ -19,7 +19,9 @@ function addUser(username) {
         proccessing:false,
         chat:[],
         gifts:[],
-        likes:[]
+        likes:[],
+        follow:[],
+        share:[]
     };
 }
 

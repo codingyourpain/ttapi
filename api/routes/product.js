@@ -7,6 +7,8 @@ var proccess = require('../functions/tiktok.js');
 var chat = require('./chat.js');
 var like = require('./like.js');
 var gift = require('./gift.js');
+var follow = require('./follow.js');
+var share = require('./share.js');
 
 router.get('/',(req,res,next)=>{
     res.status(200).json(
@@ -58,4 +60,6 @@ data.forEach((key,element) => {
 chat(router);
 like(router);
 gift(router);
+follow(router);
+share(router);
 module.exports=router;

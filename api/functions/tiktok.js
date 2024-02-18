@@ -73,6 +73,26 @@ function proccess(streamdata) {
         }
         else tiktokLiveConnection.disconnect();
     })
+    tiktokLiveConnection.on('follow', (data) => {
+        if (streamdata.proccessing){
+            streamdata.follow.push({
+                uniqueId : data.uniqueId,
+                followed   : true,
+            });
+            console.log(data.uniqueId, "followed!");
+        }
+        else tiktokLiveConnection.disconnect();
+    })
+    tiktokLiveConnection.on('share', (data) => {
+        if (streamdata.proccessing){
+            streamdata.share.push({
+                uniqueId : data.uniqueId,
+                shared   : true,
+            });
+            console.log(data.uniqueId, "shared the stream!");
+        }
+        else tiktokLiveConnection.disconnect();
+    })
     //log(streamdata);
     log(streamdata.proccessing);
 }

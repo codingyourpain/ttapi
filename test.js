@@ -39,6 +39,8 @@ Object.keys(data).forEach(key => {
 
 const app = express();
 const router = require("./api/routes/product.js");
+const simulate = require("./api/routes/simulator.js");
+
 
 app.use(cors());
 
@@ -58,7 +60,7 @@ app.use('/addUser/:username',(req,res,next) => {
     }
 });
 app.use('/products',router);
-
+app.use('/simulator',simulate);
 
 
 

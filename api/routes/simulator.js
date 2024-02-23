@@ -15,12 +15,28 @@ router.get('/',(req,res,next)=>{
         data
     );
 });
+router.get('/addUser/:username',(req,res,next)=>{
+    const productID= req.params.username;
+    data[productID] = {
+        username: productID,
+        connected:false,
+        proccessing:false,
+        chat:[],
+        gifts:[],
+        likes:[],
+        follow:[],
+        share:[]
+    };
+    res.status(200).json(
+        data
+    );
+});
 router.get('/:username',(req,res,next)=>{
     const productID= req.params.username;  //accessing the URL parameter
     if (data[productID]) {
         if (!data[productID].connect && !data[productID].proccessing) {
             data[productID].proccessing = true;
-            proccess(data[productID]);
+            data[productID].connected = true;
         }
         res.status(200).json(
             data[productID]
@@ -66,23 +82,6 @@ router.get('/:username/set/:param/:value',(req,res,next) => {
                 error:'no such property in this object'
             });
         }
-    }
-    else res.status(200).json(
-        {
-            error : 'No such user!'
-        }
-    );
-});
-router.get('/:username/simulate',(req,res,next)=>{
-    const productID= req.params.username;  //accessing the URL parameter
-    if (data[productID]) {
-        if (!data[productID].connected && !data[productID].proccessing) {
-            data[productID].proccessing = true;
-            data[productID].connected = true;
-        }
-        res.status(200).json(
-            data[productID]
-        );
     }
     else res.status(200).json(
         {

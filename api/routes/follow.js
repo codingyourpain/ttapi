@@ -45,6 +45,32 @@ function follow(router) {
             }
         );
     });
+    router.get('/:username/follow/addFollow/:uniqeId',(req,res,next) =>{
+        /*
+        streamdata.follow.push({
+                uniqueId : data.uniqueId,
+                followed   : true,
+            });
+        */
+       const productID= req.params.username;
+       const uniqueId = req.params.uniqeId;
+       if (data[productID]) {
+            data[productID].follow.push({
+                uniqueId : uniqueId,
+                followed: true,
+            });
+            res.status(200).json({
+                uniqueId : uniqueId,
+                followed: true,
+                status: "follow added"
+            });
+        }
+        else res.status(200).json(
+            {
+                error : 'some fucking errors!'
+            }
+        );
+    });
 }
 
 module.exports=follow;

@@ -60,6 +60,8 @@ function proccess(streamdata) {
     })
 
     tiktokLiveConnection.on('disconnected', () => {
+        streamdata.connect = false;
+        console.error("Disconnected from TikTok Live");
         console.log('Disconnected :(');
     })
     tiktokLiveConnection.on('streamEnd', (actionId) => {
@@ -70,6 +72,8 @@ function proccess(streamdata) {
             if (actionId === 4) {
                 console.log('Stream ended by platform moderator (ban)');
             }
+            streamdata.proccessing = false;
+            tiktokLiveConnection.disconnect();
         }
         else tiktokLiveConnection.disconnect();
     })

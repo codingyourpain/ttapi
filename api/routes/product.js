@@ -18,7 +18,7 @@ router.get('/',(req,res,next)=>{
 router.get('/:username',(req,res,next)=>{
     const productID= req.params.username;  //accessing the URL parameter
     if (data[productID]) {
-        if (!data[productID].connect && !data[productID].proccessing) {
+        if (!data[productID].connected && !data[productID].proccessing) {
             data[productID].proccessing = true;
             proccess(data[productID]);
         }

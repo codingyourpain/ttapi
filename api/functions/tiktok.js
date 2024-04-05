@@ -11,7 +11,7 @@ function proccess(streamdata) {
             streamdata.connected=true;
         }).catch(err => {
             console.error('Failed to connect', err);
-            streamdata.connected=false;
+            //streamdata.connected=false;
         })
     }
     else tiktokLiveConnection.disconnect();
@@ -61,6 +61,7 @@ function proccess(streamdata) {
 
     tiktokLiveConnection.on('disconnected', () => {
         streamdata.connected = false;
+        streamdata.proccessing = false;
         console.error("Disconnected from TikTok Live");
         console.log('Disconnected :(');
     })
